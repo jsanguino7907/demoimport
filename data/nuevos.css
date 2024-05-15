@@ -1,0 +1,245 @@
+/* General Styles */
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    background-color: #F9FAFB;
+    color: #333;
+}
+
+
+/* Container Styles */
+
+.OZ_R4c {
+    background-color: #FFFFFF;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    /* Aumenta el ancho máximo */
+    margin: auto;
+    margin-top: 20px;
+    margin-left: -20px;
+}
+
+.u4BptP.W7yOGL {
+    width: 100%;
+}
+
+
+/* Header Styles */
+
+.l2VQom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #F1F5F9;
+    border-bottom: 1px solid #ddd;
+}
+
+.l2VQom:first-child {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.LeIfXT {
+    font-weight: bold;
+}
+
+.HMVUKi.ZQiFhL {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.DB6l5z {
+    font-weight: bold;
+}
+
+.s2XxtD {
+    display: flex;
+    align-items: center;
+}
+
+.mXKhy1 {
+    margin-right: 1rem;
+}
+
+.mXKhy1 span {
+    font-size: 1rem;
+    color: #333;
+    margin-right: 0.5rem;
+}
+
+
+/* Status Badge */
+
+.w3nFNe.nnpEV7.mNSdiZ.ZwrEze {
+    background-color: #E0F2FE;
+    color: #3B82F6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.rASlAP,
+.oiKIxr {
+    margin-left: -20px;
+}
+
+
+/* Icon Styles */
+
+.v88uib {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* Button Styles */
+
+.cF7936 {
+    background-color: transparent;
+    border: none;
+    color: #3B82F6;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.cF7936.OKYBET {
+    font-weight: bold;
+    border-bottom: 2px solid #3B82F6;
+}
+
+
+/* Tab Menu */
+
+.vYiyP7 {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+    background-color: #F1F5F9;
+    border-bottom: 1px solid #ddd;
+}
+
+.MyNzRc {
+    padding-bottom: 1rem;
+}
+
+
+/* Content Styles */
+
+.TQABDn {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.LL_VGj {
+    margin-bottom: 2rem;
+}
+
+.RxDe5g {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #3B82F6;
+}
+
+.ulODKO {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+    margin-bottom: 0;
+    color: #333;
+}
+
+.bDbG1b {
+    padding: 0.25rem 0;
+    font-size: 0.875rem;
+    color: #333;
+}
+
+.bDbG1b span {
+    color: #6B7280;
+}
+
+
+/* Timeline Styles */
+
+.VTkRN8.J_ckmS {
+    position: relative;
+    padding-left: 20px;
+}
+
+.VTkRN8.J_ckmS::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 9px;
+    width: 2px;
+    background-color: #3B82F6;
+}
+
+.LL_VGj {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 20px;
+}
+
+.LL_VGj::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #3B82F6;
+    border: 2px solid #fff;
+}
+
+
+/* Change Shipping Line */
+
+.Cws2RV {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #FFF4E5;
+    border-top: 1px solid #ddd;
+    margin-top: 1rem;
+}
+
+.C4xvpO {
+    width: 100%;
+}
+
+.dTkgL8 {
+    color: #FFAB1D;
+    font-weight: bold;
+}
+
+.npKlGY {
+    background-color: #FFAB1D;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.WTsBDL.en0Ha_ {
+    background-color: #F9FAFB;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.JvftVW {
+    color: #000C37;
+}

@@ -1,0 +1,76 @@
+
+/* 
+.kkkkk {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    --header: #FFFFFF;
+    --main-dark: #15354E;
+    --main-blue: #0088FF;
+    --light-blue: #F1F9FF;
+    --light-blue2: #E2F2FF;
+    --white: #fff;
+    --gray: #4b505e;
+    --gray2: #a1b3c8;
+    --color-grey: #F5F8FF;
+    --background-primary: #f8f9fd;
+    --background-secondary: #ffffff;
+    --text-primary: #0c1840;
+    --color-dubai: #000C37;
+    --color-dirty: #6E7E92;
+    --color-storm: #9EA9B9;
+    --color-rain: #C9CFDB;
+    --color-mood: #E0E4EC;
+    --color-ice: #EFF1F6;
+    --color-lapland: #F8F9FD;
+    text-align: left;
+    --rem-base: 10px;
+    --tc-palette-black: #000;
+    --tc-palette-gray-100: #f8f9fd;
+    --tc-palette-gray-200: #eff1f6;
+    --tc-palette-gray-300: #e0e4ec;
+    --tc-palette-gray-400: #c9cfdb;
+    --tc-palette-gray-600: #9ea9b9;
+    --tc-palette-gray-800: #6e7e92;
+    --tc-palette-gray-900: #000c37;
+    --tc-palette-blue: #08f;
+    --tc-palette-blue-light: #f5f6ff;
+    --tc-palette-red: #f52c5c;
+    --tc-palette-red-light: #fff2f5;
+    --tc-palette-teal: #02bcb1;
+    --tc-palette-teal-light: #ddf8f6;
+    --tc-palette-purple: #5864ff;
+    --tc-palette-white: #fff;
+    --tc-palette-hover: #e5e8ff;
+    --tc-palette-future-accent: #f2f9ff;
+    --tc-palette-accent: #08f;
+    --tc-default-text-color: var(--tc-palette-gray-800);
+    --tc-palette-blue-dark: #0139ff;
+    --tc-palette-orange: #fc7e1d;
+    --tc-palette-orange-light: #fff5ed;
+    --tc-gradient-undefined: linear-gradient(265.89deg, #f3e7e9 -7.22%, #e3eeff 107.3%);
+    --tc-gradient-error: linear-gradient(59.74deg, #ff3b57, #892168);
+    --tc-gradient-warning: linear-gradient(59.74deg, #ffab1d, #f8501c);
+    --tc-gradient-success: linear-gradient(59.74deg, #13c549, #0dbbbb);
+    --tc-gradient-active-tab: linear-gradient(82.61deg, #33ceff -47.11%, var(--tc-palette-blue-dark) 105.57%);
+    --tc-primary-font: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    --tc-font-awesome-6-pro: Font Awesome 6 Pro;
+    --tc-shadow-1: 0 calc(var(--rem-base)*1.5) calc(var(--rem-base)*3) rgba(58, 112, 191, .15);
+    --tc-shadow-2: 0 calc(var(--rem-base)*0.4) calc(var(--rem-base)*1.5) rgba(58, 112, 191, .1);
+    --tc-transition-duration: 0.2s;
+    -webkit-font-smoothing: antialiased;
+    scrollbar-color: #ddd transparent;
+    color: var(--tc-palette-gray-900);
+    box-sizing: border-box;
+    border: 0;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+} */
+
+
