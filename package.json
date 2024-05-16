@@ -1,18 +1,19 @@
 {
     "name": "puppeteer-intro",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "functions/server.js",
     "type": "module",
     "scripts": {
-        "start": "node index.js",
-        "dev": "nodemon index.js"
+        "start": "node functions/server.js",
+        "dev": "nodemon functions/server.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
         "express": "^4.19.2",
-        "puppeteer": "^20.9.0"
+        "puppeteer": "^20.9.0",
+        "serverless-http": "^2.7.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.22"

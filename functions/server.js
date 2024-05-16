@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 import express from 'express';
+import serverless from 'serverless-http';
 import fs from 'fs';
 
 const app = express();
@@ -48,3 +49,5 @@ app.get('/getDataZIM', async(req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
+
+export const handler = serverless(app);
