@@ -12,10 +12,11 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "chrome-aws-lambda": "^10.1.0",
+        "cors": "^2.8.5",
         "express": "^4.19.2",
         "puppeteer": "^20.9.0",
-        "serverless-http": "^2.7.0",
-        "cors": "^2.8.5"
+        "serverless-http": "^2.7.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.22"
