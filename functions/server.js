@@ -2,19 +2,33 @@ import puppeteer from 'puppeteer';
 import express from 'express';
 import serverless from 'serverless-http';
 import cors from 'cors';
+import os from 'os';
 
 const app = express();
 
-// // Habilitar CORS
-// app.use(cors());
+// Habilitar CORS
+app.use(cors());
 
 const router = express.Router();
 
 async function getDataZIM(number, type, sealine) {
     const url = `https://www.searates.com/es/container/tracking/?number=${number}&type=${type}&sealine=${sealine}`;
 
+    const osPlatform = os.platform();
+    console.log('Scraper running on platform: ', osPlatform);
+    let executablePath;
+
+    if (/^win/i.test(osPlatform)) {
+        executablePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'; // Path en Windows
+    } else if (/^linux/i.test(osPlatform)) {
+        executablePath = '/usr/bin/google-chrome'; // Path en Linux
+    } else if (/^darwin/i.test(osPlatform)) {
+        executablePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'; // Path en macOS
+    }
+
     try {
         const browser = await puppeteer.launch({
+            executablePath,
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
         const page = await browser.newPage();
