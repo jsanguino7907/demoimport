@@ -1,5 +1,9 @@
 import puppeteer from 'puppeteer';
 import chromium from 'chrome-aws-lambda';
+import express from 'express';
+import serverless from 'serverless-http';
+import helmet from 'helmet';
+import { check, validationResult } from 'express-validator';
 
 /**
  * Get data from ZIM container tracking
@@ -52,3 +56,37 @@ export async function getDataZIM(number, type, sealine) {
         }
     }
 }
+
+// Configuración del servidor Express
+const app = express();
+
+// Middleware para seguridad básica
+app.use(helmet());
+
+// Validación y sanitización de los parámetros
+const validateGetDataZIM = [
+    check('number').trim().isLength({ min: 1 }).withMessage('El parámetro number es requerido.'),
+    check('type').trim().isLength({ min: 1 }).withMessage('El parámetro type es requerido.'),
+    check('sealine').trim().isLength({ min: 1 }).withMessage('El parámetro sealine es requerido.')
+];
+
+// Ruta para /getDataZIM
+app.get('/getDataZIM', validateGetDataZIM, async(req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { number, type, sealine } = req.query;
+
+    try {
+        const htmls = await getDataZIM(number, type, sealine);
+        res.json(htmls);
+    } catch (error) {
+        console.error('Error en la ruta /getDataZIM:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+});
+
+// Exportar el manejador de Netlify
+export const handler = serverless(app);
