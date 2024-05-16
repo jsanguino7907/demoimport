@@ -13,7 +13,7 @@ exports.handler = async function(event, context) {
         };
     }
 
-    const url = `https://www.searates.com/es/container/tracking/?number=${number}&type=${type}&sealine=${sealine}`;
+    const url = `${process.env.NETLIFY_FUNCTIONS_URL}/scrape?number=${number}&type=${type}&sealine=${sealine}`;
 
     let browser = null;
 
