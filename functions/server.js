@@ -1,7 +1,10 @@
-import puppeteer from 'puppeteer-core'; // Cambio a puppeteer-core
+import puppeteer from 'puppeteer-core';
 import express from 'express';
 import serverless from 'serverless-http';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Cargar las variables de entorno desde el archivo .env
 
 const app = express();
 
@@ -16,7 +19,7 @@ async function getDataZIM(number, type, sealine) {
     try {
         const browser = await puppeteer.launch({
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
-            executablePath: process.env.CHROME_EXECUTABLE_PATH || 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe', // Ruta de ejemplo para Windows
+            executablePath: process.env.CHROME_EXECUTABLE_PATH || 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
         });
         const page = await browser.newPage();
 
