@@ -13,9 +13,7 @@ async function getDataZIM(number, type, sealine) {
     });
     const page = await browser.newPage();
 
-    // Set the viewport to 1920x1080
     await page.setViewport({ width: 1920, height: 1080 });
-
     await page.goto(url);
 
     const element1 = await page.evaluateHandle(() => {
@@ -29,11 +27,8 @@ async function getDataZIM(number, type, sealine) {
     });
 
     await element2.screenshot({ path: 'data/element2.png' });
-
-    // Closing the browser
     await browser.close();
 
-    // Return the HTMLs
     return { html1 };
 }
 
@@ -53,4 +48,5 @@ app.get('/getDataZIM', async(req, res) => {
     }
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
