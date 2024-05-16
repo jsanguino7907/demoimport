@@ -1,9 +1,14 @@
 import puppeteer from 'puppeteer';
 import express from 'express';
 import serverless from 'serverless-http';
-import fs from 'fs';
+import cors from 'cors';
 
 const app = express();
+
+// Habilitar CORS
+app.use(cors());
+
+const router = express.Router();
 
 async function getDataZIM(number, type, sealine) {
     const url = `https://www.searates.com/es/container/tracking/?number=${number}&type=${type}&sealine=${sealine}`;
@@ -31,7 +36,8 @@ async function getDataZIM(number, type, sealine) {
     }
 }
 
-app.get('/getDataZIM', async(req, res) => {
+// Definir la ruta usando el router
+router.get('/getDataZIM', async(req, res) => {
     const { number, type, sealine } = req.query;
 
     if (!number || !type || !sealine) {
@@ -47,7 +53,14 @@ app.get('/getDataZIM', async(req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
+// Usar el router en la aplicación
+app.use('/.netlify/functions/server', router);
 
+// Exportar el manejador de serverless
 export const handler = serverless(app);
+
+// Iniciar el servidor localmente si no está en producción
+const PORT = process.env.PORT || 3000;
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
+}

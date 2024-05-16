@@ -4,6 +4,7 @@
     "main": "functions/server.js",
     "type": "module",
     "scripts": {
+        "build": "netlify deploy --prod",
         "start": "node functions/server.js",
         "dev": "nodemon functions/server.js"
     },
@@ -13,7 +14,8 @@
     "dependencies": {
         "express": "^4.19.2",
         "puppeteer": "^20.9.0",
-        "serverless-http": "^2.7.0"
+        "serverless-http": "^2.7.0",
+        "cors": "^2.8.5"
     },
     "devDependencies": {
         "nodemon": "^2.0.22"
