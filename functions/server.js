@@ -14,7 +14,7 @@ app.use(cors());
 const router = express.Router();
 
 async function getDataZIM(number, type, sealine) {
-    const url = `/.netlify/functions/scrape?number=${number}&type=${type}&sealine=${sealine}`;
+    const url = `${process.env.SCRAPE_FUNCTION_URL}?number=${number}&type=${type}&sealine=${sealine}`;
 
     try {
         const response = await axios.get(url);
@@ -29,7 +29,7 @@ async function getDataZIM(number, type, sealine) {
 router.get('/getDataZIM', async(req, res) => {
     const { number, type, sealine } = req.query;
 
-    if (!number || !type || !sealine) { // Corrección aquí
+    if (!number || !type || !sealine) {
         return res.status(400).send('Faltan parámetros de consulta requeridos: number, type, sealine');
     }
 
