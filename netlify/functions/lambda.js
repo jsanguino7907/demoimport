@@ -15,16 +15,22 @@ export async function getDataZIM(number, type, sealine) {
     }
 
     const url = `https://www.searates.com/es/container/tracking/?number=${number}&type=${type}&sealine=${sealine}`;
-    let browser;
+    let browser = null;
 
     try {
-        const isLocal = !process.env.AWS_EXECUTION_ENV;
-
-        browser = await (isLocal ? puppeteer : puppeteer.launch({
-            args: chromium.args,
-            executablePath: await chromium.executablePath,
-            headless: chromium.headless,
-        }));
+        if (process.env.AWS_EXECUTION_ENV) {
+            // Running in a production environment (e.g., AWS Lambda)
+            browser = await puppeteer.launch({
+                args: chromium.args,
+                executablePath: await chromium.executablePath,
+                headless: chromium.headless,
+            });
+        } else {
+            // Running in a local development environment
+            browser = await puppeteer.launch({
+                headless: true, // Default headless mode
+            });
+        }
 
         const page = await browser.newPage();
         await page.setViewport({ width: 1920, height: 1080 });
@@ -41,7 +47,7 @@ export async function getDataZIM(number, type, sealine) {
         console.error("Error occurred while getting data from ZIM:", error);
         throw new Error(`Failed to get data from ZIM: ${error.message}`);
     } finally {
-        if (browser) {
+        if (browser && browser.close) {
             await browser.close();
         }
     }
