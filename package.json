@@ -1,5 +1,5 @@
 {
-    "name": "puppeter-intro",
+    "name": "puppeteer-intro",
     "version": "1.0.0",
     "main": "index.js",
     "type": "module",
@@ -12,7 +12,6 @@
     "license": "ISC",
     "dependencies": {
         "express": "^4.19.2",
-        "html-pdf": "^3.0.1",
         "puppeteer": "^20.9.0"
     },
     "devDependencies": {
