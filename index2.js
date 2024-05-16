@@ -1,6 +1,7 @@
-import puppeteer from "puppeteer";
-import express from 'express';
+import puppeteer from 'puppeteer';
 import fs from 'fs';
+import pdf from 'html-pdf';
+import express from 'express';
 
 const app = express();
 
@@ -13,28 +14,41 @@ async function getDataZIM(number, type, sealine) {
     });
     const page = await browser.newPage();
 
-    // Set the viewport to 1920x1080
+    // Establecer el tamaño de la ventana a 1920x1080
     await page.setViewport({ width: 1920, height: 1080 });
 
     await page.goto(url);
 
+    // Extraer el primer elemento usando un selector CSS
     const element1 = await page.evaluateHandle(() => {
         return document.querySelector("#tracking_system_root").shadowRoot.querySelector("#app-root > div.jNVSgr > div.sTC0fR > div.OZ_R4c");
     });
 
-    const html1 = await page.evaluate(element => element.outerHTML, element1);
+    // Capturar el primer elemento en un PNG
+    await element1.screenshot({ path: 'data/element1.png' });
 
+    // Guardar el HTML del primer elemento
+    const html1 = await page.evaluate(element => element.outerHTML, element1);
+    fs.writeFileSync('data/element1.html', html1);
+
+    // Convertir el HTML a PDF
+    pdf.create(html1).toFile('data/element1.pdf', function(err, res) {
+        if (err) return console.log(err);
+        console.log(res);
+    });
+
+    // Extraer el segundo elemento usando un selector CSS
     const element2 = await page.evaluateHandle(() => {
         return document.querySelector("#tracking_system_root").shadowRoot.querySelector("#app-root > div.jNVSgr > div.bQFM_E");
     });
 
+    // Capturar el segundo elemento en un PNG
     await element2.screenshot({ path: 'data/element2.png' });
 
-    // Closing the browser
+    // Cerrar el navegador
     await browser.close();
 
-    // Return the HTMLs
-    return { html1 };
+    return html1; // Retornar el HTML del primer elemento
 }
 
 app.get('/getDataZIM', async(req, res) => {
@@ -45,12 +59,12 @@ app.get('/getDataZIM', async(req, res) => {
     }
 
     try {
-        const htmls = await getDataZIM(number, type, sealine);
-        res.json(htmls);
+        const elementHtml = await getDataZIM(number, type, sealine);
+        res.send(elementHtml); // Enviar el HTML del primer elemento como respuesta
     } catch (error) {
         console.error('Error:', error);
         res.status(500).send('Error interno del servidor');
     }
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(3000, () => console.log('Servidor corriendo en el puerto 3000'));
