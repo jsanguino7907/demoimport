@@ -1,7 +1,7 @@
-import puppeteer from 'puppeteer';
-import chromium from 'chrome-aws-lambda';
 import express from 'express';
 import serverless from 'serverless-http';
+import puppeteer from 'puppeteer';
+import chromium from 'chrome-aws-lambda';
 import helmet from 'helmet';
 import { check, validationResult } from 'express-validator';
 
