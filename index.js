@@ -47,6 +47,8 @@ async function getDataZIM(number, type, sealine) {
 
     // Cerrar el navegador
     await browser.close();
+
+    return html1; // Retornar el HTML del primer elemento
 }
 
 app.get('/getDataZIM', async(req, res) => {
@@ -57,8 +59,8 @@ app.get('/getDataZIM', async(req, res) => {
     }
 
     try {
-        await getDataZIM(number, type, sealine);
-        res.send('Datos capturados y guardados.');
+        const elementHtml = await getDataZIM(number, type, sealine);
+        res.send(elementHtml); // Enviar el HTML del primer elemento como respuesta
     } catch (error) {
         console.error('Error:', error);
         res.status(500).send('Error interno del servidor');
