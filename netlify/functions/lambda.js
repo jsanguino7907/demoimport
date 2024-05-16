@@ -18,20 +18,13 @@ export async function getDataZIM(number, type, sealine) {
     let browser;
 
     try {
-        // Determine whether to use puppeteer or chrome-aws-lambda
-        if (process.env.AWS_EXECUTION_ENV) {
-            // Running in a production environment (e.g., AWS Lambda)
-            browser = await puppeteer.launch({
-                args: chromium.args,
-                executablePath: await chromium.executablePath,
-                headless: chromium.headless,
-            });
-        } else {
-            // Running in a local development environment
-            browser = await puppeteer.launch({
-                headless: true, // Default headless mode
-            });
-        }
+        const isLocal = !process.env.AWS_EXECUTION_ENV;
+
+        browser = await (isLocal ? puppeteer : puppeteer.launch({
+            args: chromium.args,
+            executablePath: await chromium.executablePath,
+            headless: chromium.headless,
+        }));
 
         const page = await browser.newPage();
         await page.setViewport({ width: 1920, height: 1080 });
