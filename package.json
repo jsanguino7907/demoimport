@@ -6,14 +6,13 @@
     "scripts": {
         "start": "node server.js",
         "dev": "nodemon server.js",
-        "build": "rm -rf lambda/.netlify && mkdir lambda/.netlify && cp lambda.js lambda/.netlify/function-name.js"
+        "build": "mkdir -p functions && cp lambda.js functions/lambda.js"
     },
     "dependencies": {
         "chrome-aws-lambda": "^10.1.0",
         "express": "^4.19.2",
         "express-validator": "^7.0.1",
         "helmet": "^7.1.0",
-        "puppeteer": "^20.9.0",
         "puppeteer-core": "^20.9.0"
     },
     "devDependencies": {
