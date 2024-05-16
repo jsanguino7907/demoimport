@@ -1,6 +1,5 @@
 import puppeteer from 'puppeteer';
 import express from 'express';
-import fs from 'fs';
 
 const app = express();
 
@@ -14,6 +13,8 @@ async function getDataZIM(number, type, sealine) {
         const page = await browser.newPage();
 
         await page.setViewport({ width: 1920, height: 1080 });
+
+        // Navega a la URL especificada
         await page.goto(url, { waitUntil: 'networkidle2' });
 
         const element1 = await page.evaluateHandle(() => {
