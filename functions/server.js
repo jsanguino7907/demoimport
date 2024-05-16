@@ -1,7 +1,7 @@
-import puppeteer from 'puppeteer-core';
 import express from 'express';
 import serverless from 'serverless-http';
 import cors from 'cors';
+import axios from 'axios';
 import dotenv from 'dotenv';
 
 dotenv.config(); // Cargar las variables de entorno desde el archivo .env
@@ -14,26 +14,11 @@ app.use(cors());
 const router = express.Router();
 
 async function getDataZIM(number, type, sealine) {
-    const url = `https://www.searates.com/es/container/tracking/?number=${number}&type=${type}&sealine=${sealine}`;
+    const url = `/.netlify/functions/scrape?number=${number}&type=${type}&sealine=${sealine}`;
 
     try {
-        const browser = await puppeteer.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
-            executablePath: process.env.CHROME_EXECUTABLE_PATH || 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
-        });
-        const page = await browser.newPage();
-
-        await page.setViewport({ width: 1920, height: 1080 });
-        await page.goto(url, { waitUntil: 'networkidle2' });
-
-        const element1 = await page.evaluateHandle(() => {
-            return document.querySelector("#tracking_system_root").shadowRoot.querySelector("#app-root > div.jNVSgr > div.sTC0fR > div.OZ_R4c");
-        });
-
-        const html1 = await page.evaluate(element => element.outerHTML, element1);
-
-        await browser.close();
-        return { html1 };
+        const response = await axios.get(url);
+        return response.data;
     } catch (error) {
         console.error("Error occurred while getting data from ZIM:", error);
         throw error;
@@ -44,7 +29,7 @@ async function getDataZIM(number, type, sealine) {
 router.get('/getDataZIM', async(req, res) => {
     const { number, type, sealine } = req.query;
 
-    if (!number || !type || !sealine) {
+    if (!number || !type || !sealine) { // Corrección aquí
         return res.status(400).send('Faltan parámetros de consulta requeridos: number, type, sealine');
     }
 
