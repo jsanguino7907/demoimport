@@ -4,7 +4,7 @@ Este proyecto utiliza Puppeteer para capturar y guardar elementos de una página
 
 ## Requisitos
 
-- Node.js (versión 12 o superior)
+- Node.js (versión 14 o superior)
 - npm (gestor de paquetes de Node.js)
 
 ## Instalación
@@ -12,8 +12,8 @@ Este proyecto utiliza Puppeteer para capturar y guardar elementos de una página
 1. Clona este repositorio:
 
     ```sh
-    git remote add origin https://github.com/LeonardoHuelvas/App-tracker.git
-    cd puppeteer-intro
+    git clone https://github.com/LeonardoHuelvas/App-tracker.git
+    cd App-tracker
     ```
 
 2. Instala las dependencias:
@@ -29,27 +29,30 @@ Este proyecto utiliza Puppeteer para capturar y guardar elementos de una página
 
 ## Uso
 
-1. Asegúrate de que el directorio `data` exista en el raíz del proyecto.
-2. Ejecuta el proyecto:
+1. Ejecuta el proyecto:
 
     ```sh
     npm start
     ```
 
-3. Abre tu navegador y ve a `http://localhost:3000/getDataZIM?number=YOUR_NUMBER&type=YOUR_TYPE&sealine=YOUR_SEALINE` reemplazando `YOUR_NUMBER`, `YOUR_TYPE`, y `YOUR_SEALINE` con los valores correspondientes.
+2. Abre tu navegador y ve a `http://localhost:3000/getDataZIM?number=YOUR_NUMBER&type=YOUR_TYPE&sealine=YOUR_SEALINE` reemplazando `YOUR_NUMBER`, `YOUR_TYPE`, y `YOUR_SEALINE` con los valores correspondientes.
 
-El servidor capturará y guardará los datos de la página web de seguimiento de contenedores.
+El servidor capturará y devolverá los datos de la página web de seguimiento de contenedores.
 
 ## Estructura del Proyecto
 
-- `index.js`: Archivo principal que configura el servidor y maneja la lógica de captura de datos con Puppeteer.
-- `data/`: Directorio donde se guardan las capturas de pantalla y archivos HTML.
+- `server.js`: Archivo principal que configura el servidor y maneja la lógica de captura de datos con Puppeteer.
+- `lambda.js`: Contiene la función para capturar los datos de la página web utilizando Puppeteer.
+- `netlify/functions/`: Directorio donde se colocan las funciones para Netlify.
 
 ## Dependencias
 
 - `express`: Framework para crear el servidor.
-- `html-pdf`: Biblioteca para convertir HTML a PDF.
+- `express-validator`: Biblioteca para validar y sanitizar entradas.
+- `helmet`: Middleware de seguridad para Express.
 - `puppeteer`: Biblioteca para controlar el navegador Chromium.
+- `puppeteer-core`: Versión ligera de Puppeteer para entornos serverless.
+- `chrome-aws-lambda`: Biblioteca para usar Chromium en entornos serverless.
 
 ## Contribuir
 
