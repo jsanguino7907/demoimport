@@ -5,8 +5,8 @@ import cors from 'cors';
 
 const app = express();
 
-// Habilitar CORS
-app.use(cors());
+// // Habilitar CORS
+// app.use(cors());
 
 const router = express.Router();
 
@@ -62,5 +62,6 @@ export const handler = serverless(app);
 // Iniciar el servidor localmente si no está en producción
 const PORT = process.env.PORT || 3000;
 if (process.env.NODE_ENV !== 'production') {
+    app.use('/', router); // Configurar el router para que funcione localmente
     app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
 }
