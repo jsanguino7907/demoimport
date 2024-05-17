@@ -1,5 +1,5 @@
 import express from 'express';
-import { getDataZIM } from './netlify/functions/lambda.js';
+import { getDataZIM } from './netlify/functions/lambda.js'; // Asegúrate de que la ruta sea correcta
 import helmet from 'helmet';
 import { check, validationResult } from 'express-validator';
 
@@ -37,6 +37,7 @@ app.get('/getDataZIM', validateGetDataZIM, async(req, res) => {
     const { number, type, sealine } = req.query;
 
     try {
+        console.log('Calling getDataZIM with parameters:', { number, type, sealine });
         const htmls = await getDataZIM(number, type, sealine);
         res.json(htmls);
     } catch (error) {
@@ -53,5 +54,3 @@ app.post('/csp-violation-report-endpoint', express.json(), (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
-
-// https://api-tracker.netlify.app/.netlify/functions/lambda/getDataZIM?number=HLBU1043510&type=CT&sealine=HLCU
