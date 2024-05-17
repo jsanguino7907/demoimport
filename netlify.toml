@@ -7,5 +7,5 @@
 
 [[redirects]]
   from = "/getDataZIM"
-  to = "/.netlify/functions/lambda"
+  to = "/.netlify/functions/lambda.getDataZIM"
   status = 200

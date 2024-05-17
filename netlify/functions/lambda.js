@@ -32,7 +32,7 @@ export async function getDataZIM(number, type, sealine) {
                 headless: chromium.headless,
             });
         } else {
-            // Running in a local development environment
+            // Runningin a local development environment
             browser = await puppeteer.launch({
                 headless: true, // Default headless mode
             });
