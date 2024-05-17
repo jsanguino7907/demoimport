@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
 import chromium from 'chrome-aws-lambda';
 
 /**
@@ -23,7 +23,6 @@ export async function getDataZIM(number, type, sealine) {
 
     try {
         if (process.env.AWS_EXECUTION_ENV) {
-            // Running in a production environment (e.g., AWS Lambda)
             console.log('Running in AWS Lambda environment');
             browser = await puppeteer.launch({
                 args: chromium.args,
@@ -31,10 +30,11 @@ export async function getDataZIM(number, type, sealine) {
                 headless: chromium.headless,
             });
         } else {
-            // Running in a local development environment
             console.log('Running in local development environment');
             browser = await puppeteer.launch({
                 headless: true, // Default headless mode
+                args: ['--no-sandbox', '--disable-setuid-sandbox'],
+                executablePath: puppeteer.executablePath()
             });
         }
 
