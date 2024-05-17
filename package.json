@@ -17,9 +17,9 @@
         "serverless-http": "^2.7.0"
     },
     "devDependencies": {
-        "puppeteer": "^20.9.0",
         "mkdirp": "^1.0.4",
-        "nodemon": "^2.0.22"
+        "nodemon": "^2.0.22",
+        "puppeteer": "^20.9.0"
     },
     "description": "",
     "author": "",
