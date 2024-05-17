@@ -62,8 +62,17 @@ export async function getDataZIM(number, type, sealine) {
 // Configuración del servidor Express
 const app = express();
 
-// Middleware para seguridad básica
+// Middleware para seguridad básica con Helmet
 app.use(helmet());
+
+// Middleware para Content-Security-Policy-Report-Only
+app.use((req, res, next) => {
+    res.setHeader(
+        'Content-Security-Policy-Report-Only',
+        "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; frame-src 'self'; report-uri /csp-violation-report-endpoint"
+    );
+    next();
+});
 
 /**
  * Middleware de validación para los parámetros de la ruta /getDataZIM.
@@ -101,6 +110,12 @@ app.get('/getDataZIM', validateGetDataZIM, async(req, res) => {
         console.error('Error en la ruta /getDataZIM:', error);
         res.status(500).send('Error interno del servidor');
     }
+});
+
+// Ruta para recibir reportes de CSP
+app.post('/csp-violation-report-endpoint', express.json(), (req, res) => {
+    console.log('CSP Violation:', req.body);
+    res.status(204).end(); // Responde con 204 No Content
 });
 
 /**
