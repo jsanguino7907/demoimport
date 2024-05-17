@@ -13,7 +13,7 @@ import { check, validationResult } from 'express-validator';
  * @returns {Promise<Object>} - HTML content of the tracking element
  * @throws {Error} - Throws error if something goes wrong
  */
-export async function getDataZIM(number, type, sealine) {
+async function getDataZIM(number, type, sealine) {
     if (!number || !type || !sealine) {
         throw new Error("Invalid input parameters. Please provide number, type, and sealine.");
     }
