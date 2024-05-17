@@ -4,3 +4,8 @@
 
 [functions]
   node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/getDataZIM"
+  to = "/.netlify/functions/lambda"
+  status = 200
