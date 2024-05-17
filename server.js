@@ -1,5 +1,5 @@
 import express from 'express';
-import { getDataZIM } from './netlify/functions/lambda.js'; // Asegúrate de que la ruta sea correcta
+import { getDataZIM } from './netlify/functions/lambda.js';
 import helmet from 'helmet';
 import { check, validationResult } from 'express-validator';
 
@@ -37,7 +37,7 @@ app.get('/getDataZIM', validateGetDataZIM, async(req, res) => {
     const { number, type, sealine } = req.query;
 
     try {
-        console.log('Calling getDataZIM with parameters:', { number, type, sealine });
+        console.log('Calling getDataZIM with parameters:', { number, type, sealine }); // Log parameters
         const htmls = await getDataZIM(number, type, sealine);
         res.json(htmls);
     } catch (error) {

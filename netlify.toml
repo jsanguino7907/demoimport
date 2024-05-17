@@ -3,7 +3,7 @@
   publish = "data"  # Carpeta que contiene tus archivos estáticos
 
 [functions]
-  directory = "netlify/functions/lambda"
+  directory = "netlify/functions"
   node_bundler = "esbuild"
 
 [[headers]]
