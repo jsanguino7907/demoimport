@@ -6,14 +6,16 @@ import helmet from 'helmet';
 import { check, validationResult } from 'express-validator';
 
 /**
- * Get data from ZIM container tracking
- * @param {string} number - Container number
- * @param {string} type - Container type
- * @param {string} sealine - Sealine
- * @returns {Promise<Object>} - HTML content of the tracking element
- * @throws {Error} - Throws error if something goes wrong
+ * Get data from ZIM container tracking.
+ * This function scrapes the tracking information for a given container number, type, and sealine from the SeaRates website.
+ * 
+ * @param {string} number - Container number.
+ * @param {string} type - Container type.
+ * @param {string} sealine - Sealine.
+ * @returns {Promise<Object>} - HTML content of the tracking element.
+ * @throws {Error} - Throws error if something goes wrong.
  */
-async function getDataZIM(number, type, sealine) {
+export async function getDataZIM(number, type, sealine) {
     if (!number || !type || !sealine) {
         throw new Error("Invalid input parameters. Please provide number, type, and sealine.");
     }
@@ -63,14 +65,27 @@ const app = express();
 // Middleware para seguridad básica
 app.use(helmet());
 
-// Validación y sanitización de los parámetros
+/**
+ * Middleware de validación para los parámetros de la ruta /getDataZIM.
+ * Valida y sanitiza los parámetros de consulta: number, type, y sealine.
+ */
 const validateGetDataZIM = [
     check('number').trim().isLength({ min: 1 }).withMessage('El parámetro number es requerido.'),
     check('type').trim().isLength({ min: 1 }).withMessage('El parámetro type es requerido.'),
     check('sealine').trim().isLength({ min: 1 }).withMessage('El parámetro sealine es requerido.')
 ];
 
-// Ruta para /getDataZIM
+/**
+ * Ruta para /getDataZIM.
+ * Procesa las solicitudes GET para obtener los datos de seguimiento de ZIM.
+ * 
+ * @route GET /getDataZIM
+ * @param {string} number - Container number.
+ * @param {string} type - Container type.
+ * @param {string} sealine - Sealine.
+ * @returns {Object} - JSON con el contenido HTML del elemento de seguimiento.
+ * @throws {Error} - Error interno del servidor.
+ */
 app.get('/getDataZIM', validateGetDataZIM, async(req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -88,5 +103,8 @@ app.get('/getDataZIM', validateGetDataZIM, async(req, res) => {
     }
 });
 
-// Exportar el manejador de Netlify
+/**
+ * Exportar el manejador de Netlify.
+ * Utiliza serverless-http para crear una función compatible con Netlify.
+ */
 export const handler = serverless(app);
