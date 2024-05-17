@@ -1,5 +1,5 @@
 import express from 'express';
-import { getDataZIM } from './netlify/functions/lambda.js'; // Asegúrate de que la ruta sea correcta
+import { getDataZIM } from './netlify/functions/lambda.js';
 import helmet from 'helmet';
 import { check, validationResult } from 'express-validator';
 

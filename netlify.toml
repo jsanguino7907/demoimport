@@ -1,8 +1,9 @@
 [build]
   command = "npm install --legacy-peer-deps && npm run build"
-  functions = "netlify/functions"
+  publish = "data"  # Carpeta que contiene tus archivos estáticos
 
 [functions]
+  directory = "netlify/functions"
   node_bundler = "esbuild"
 
 [[headers]]
