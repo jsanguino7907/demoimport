@@ -53,3 +53,5 @@ app.post('/csp-violation-report-endpoint', express.json(), (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
+
+// https://api-tracker.netlify.app/.netlify/functions/lambda/getDataZIM?number=HLBU1043510&type=CT&sealine=HLCU

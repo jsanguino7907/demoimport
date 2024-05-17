@@ -22,22 +22,6 @@ export async function getDataZIM(number, type, sealine) {
 
     const url = `https://www.searates.com/es/container/tracking/?number=${number}&type=${type}&sealine=${sealine}`;
     let browser = null;
-    const lambdaFunctionHandler = (event, context, callback) => {
-        const request = event.Records[0].cf;
-        const number = request.queryStringParameters.number;
-
-        // Do something with the number value here
-
-        callback(null, {
-            status: '200',
-            body: JSON.stringify({ message: 'Success' }),
-            headers: {
-                'content-type': [{ key: 'Content-Type', value: 'application/json' }],
-            },
-        });
-    };
-
-    exports.handler = lambdaFunctionHandler;
 
     try {
         if (process.env.AWS_EXECUTION_ENV) {
@@ -48,7 +32,7 @@ export async function getDataZIM(number, type, sealine) {
                 headless: chromium.headless,
             });
         } else {
-            // Runningin a local development environment
+            // Running in a local development environment
             browser = await puppeteer.launch({
                 headless: true, // Default headless mode
             });
