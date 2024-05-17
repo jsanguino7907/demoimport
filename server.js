@@ -12,7 +12,7 @@ app.use(helmet());
 app.use((req, res, next) => {
     res.setHeader(
         'Content-Security-Policy-Report-Only',
-        "default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; frame-src 'self'; report-uri /csp-violation-report-endpoint"
+        "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; frame-src 'self'; report-uri /csp-violation-report-endpoint"
     );
     next();
 });
