@@ -65,10 +65,10 @@ const app = express();
 // Middleware para seguridad básica con Helmet
 app.use(helmet());
 
-// Middleware para Content-Security-Policy
+// Middleware para Content-Security-Policy-Report-Only
 app.use((req, res, next) => {
     res.setHeader(
-        'Content-Security-Policy',
+        'Content-Security-Policy-Report-Only',
         "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; frame-src 'self'; report-uri /csp-violation-report-endpoint"
     );
     next();

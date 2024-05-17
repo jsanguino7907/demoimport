@@ -1,11 +1,11 @@
 {
     "name": "puppeteer-lambda",
     "version": "1.0.0",
-    "main": "lambda.js",
+    "main": "server.js",
     "type": "module",
     "scripts": {
-        "start": "node lambda.js",
-        "dev": "nodemon lambda.js",
+        "start": "node server.js",
+        "dev": "nodemon server.js",
         "build": "mkdirp netlify/functions && cp lambda.js netlify/functions/"
     },
     "dependencies": {
